@@ -14,12 +14,15 @@ router.get('/collection', function(req, res, next) {
 });
 
 /**
-* Route which mock any required request based on the collection uplaoded
-*/
+ * Route which mock any required request based on the collection uplaoded
+ */
 router.use('/mock', function(req, res, next) {
 	var responseVal = collectionParser.getResponse(req.path, req.method, req.query);
-	res.headers = responseVal.headers;
-	res.statusCode = responseVal.statusCode;
-	res.send(responseVal.body);
+	// Let the server set these headers based on the client requests
+	delete responseVal.headers['content-disposition'];
+	delete responseVal.headers['content-encoding'];
+	delete responseVal.headers['content-length'];
+	res.set(responseVal.headers);
+	res.status(responseVal.statusCode).send(responseVal.body);
 });
 module.exports = router;
