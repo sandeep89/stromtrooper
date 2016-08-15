@@ -3,3 +3,14 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  p Below are the endpoints supported by the server:
+
+  p - /1.1/search/tweets.json (Supportes statuses 200 and 400).
+  p - /1.1/users/show.json (Supportes statuses 200 and 400).
+  p - /1.1/statuses/mentions_timeline.json (beyond this only suports 200 status)
+  p - /1.1/friends/list.json
+  p - /1.1/followers/list.json
+  p - /1.1/mutes/users/list.json
+  p Note that server by default runs on port 3000, I am assuming that there has been no port change you can test below endpoints.
+
+  p If you hit server with no status query http://localhost:3000/mock/1.1/search/tweets.json it will assume status code as 200. For p 400 statusCode, explicity it needs to be mentioned in query http://localhost:3000/mock/1.1/search/tweets.json?status=400
