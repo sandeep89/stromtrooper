@@ -27,5 +27,9 @@ Note that server by default runs on port `3000`, I am assuming that there has be
 If you hit server with no status query `http://localhost:3000/mock/1.1/search/tweets.json` it will assume status code as 200.
 For 400 statusCode, explicity it needs to be mentioned in query `http://localhost:3000/mock/1.1/search/tweets.json?status=400`
 
+##### Note: To generate random response based on the body schema attach `mockRandom=1` in the query params
+
+Try: `http://localhost:3000/mock/1.1/search/tweets.json?mockRandom=1`
 ##TODO:
-Testcases :)
+- Testcases :)
+- Test suport for POST/PUT/DELETE/PATCH request, currently only tested GET 
